@@ -1,0 +1,27 @@
+pipeline {
+         agent any
+         stages {
+                 stage('Build') {
+                 steps {
+                     echo 'Hi, man. Starting to build the App.'
+                 }
+                 }
+                 stage('Test') {
+                 steps {
+                     echo 'I am here...'
+                    input('Do you want to proceed?')
+                 }
+                 }
+                 stage('Deploy') {
+                     steps {
+                                echo "Start the deploy .."
+                           }
+                 }
+                 stage('Prod') {
+                     steps {
+                                echo "App is Prod Ready"
+                              }
+
+              }
+         }
+}

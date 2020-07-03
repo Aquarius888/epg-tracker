@@ -15,7 +15,8 @@ pipeline {
                  stage('Deploy') {
                     steps {
                        echo "Start the deploy .."
-                       sh -c 'pwd'
+                       sh "pwd"
+                       sh "ls -al"
                        //ansiblePlaybook(
                        //   vaultCredentialsId: 'AnsibleVault',
                        //   inventory: "localhost,",

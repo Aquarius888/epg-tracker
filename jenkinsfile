@@ -18,7 +18,7 @@ pipeline {
                        ansiblePlaybook(
                           vaultCredentialsId: 'AnsibleVault',
                           inventory: "localhost,",
-                          playbook: '/opt/ansible/onboarding_project.yml'
+                          playbook: 'onboarding_project.yml'
                           )
                            }
                  }

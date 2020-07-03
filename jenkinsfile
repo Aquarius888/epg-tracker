@@ -19,6 +19,7 @@ pipeline {
                           vaultCredentialsId: 'AnsibleVault',
                           inventory: "localhost,",
                           playbook: '/opt/ansible/onboarding_project.yml'
+                          )
                            }
                  }
                  stage('Prod') {

@@ -15,11 +15,13 @@ pipeline {
                  stage('Deploy') {
                     steps {
                        echo "Start the deploy .."
-                       ansiblePlaybook(
-                          vaultCredentialsId: 'AnsibleVault',
-                          inventory: "localhost,",
-                          playbook: 'onboarding_project.yml'
-                          )
+                       sh -c 'pwd'
+                       sh -c 'ls -al'
+                       //ansiblePlaybook(
+                       //   vaultCredentialsId: 'AnsibleVault',
+                       //   inventory: "localhost,",
+                       //   playbook: 'onboarding_project.yml'
+                       //   )
                            }
                  }
                  stage('Prod') {

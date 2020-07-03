@@ -2,25 +2,29 @@ pipeline {
          agent any
          stages {
                  stage('Build') {
-                 steps {
-                     echo 'Hi, man. Starting to build the App.'
-                 }
+                    steps {
+                       echo 'Hi, man. Starting to build the App.'
+                          }
                  }
                  stage('Test') {
-                 steps {
-                     echo 'I am here...'
-                    input('Do you want to proceed?')
-                 }
+                    steps {
+                       echo 'I am here...'
+                       input('Do you want to proceed?')
+                          }
                  }
                  stage('Deploy') {
-                     steps {
-                                echo "Start the deploy .."
+                    steps {
+                       echo "Start the deploy .."
+                       ansiblePlaybook(
+                          vaultCredentialsId: 'AnsibleVault',
+                          inventory: "localhost,",
+                          playbook: '/opt/ansible/onboarding_project.yml'
                            }
                  }
                  stage('Prod') {
-                     steps {
-                                echo "App is Prod Ready"
-                              }
+                    steps {
+                       echo "App is Prod Ready"
+                          }
 
               }
          }

@@ -1,6 +1,6 @@
 #!groovy
 def map
-def str = "{"
+def str
 properties([disableConcurrentBuilds()])
 
 pipeline {
@@ -33,8 +33,7 @@ pipeline {
 
                                         }
                                         echo "$map"
-                                        str = toKeyValue(map)
-                                        str = str + "}"
+                                        str = "{" + toKeyValue(map) + "}"
                                         echo "$str"
 
                               }

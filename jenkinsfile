@@ -43,7 +43,7 @@ pipeline {
                                  inventory: "localhost,",
                                  playbook: 'multiline.yml',
                                  extraVars: [
-                                    multiline: {'Paul': 'Gol', 'Yl': 'skj'}
+                                    multiline: '{"Paul": "Gol"}'
                                     ]
                                             )
                            }

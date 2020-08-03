@@ -18,9 +18,9 @@ pipeline {
                     steps {
                               script {
                                         def multiline = params.multiline
-                                        multiline.eachLine { line, count ->
-                                        echo "$line"
-                                        }
+                                        multiline.split("\n").each { String line ->
+                                              echo "$line"
+                                          }
                               }
                        echo 'I am here...'
                        //input('Do you want to proceed?')

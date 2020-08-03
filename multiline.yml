@@ -7,8 +7,15 @@
     multiline:
       name1: value1
       name2: value2
+    list:
+      - a
+      - b
   tasks:
-    - debug: var=multiline
+    - debug: var=list
+
+    - debug:
+        msg: "{{ item }}"
+      loop: "{{ list }}"
 
     - name: Show me what you got
       debug:

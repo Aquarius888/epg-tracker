@@ -16,8 +16,8 @@ pipeline {
                  }
                  stage('Test') {
                     steps {
-                              def multiline = params.multiline
                               script {
+                                        def multiline = params.multiline
                                         multiline.eachLine { line, count ->
                                         echo "$line"
                                         }

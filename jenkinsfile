@@ -16,8 +16,11 @@ pipeline {
                  }
                  stage('Test') {
                     steps {
+                              params.multiline.eachLine { line, count ->
+                                        echo "$line"
+                              }
                        echo 'I am here...'
-                       input('Do you want to proceed?')
+                       //input('Do you want to proceed?')
                           }
                  }
                  stage('Deploy') {

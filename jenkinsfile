@@ -51,7 +51,7 @@ pipeline {
                                  playbook: 'multiline.yml',
                                  extraVars: [
                                     multiline: "$str",
-                                    list: '[aa,bb]'
+                                    list: '["aa","bb"]'
                                     ]
                                             )
                            }

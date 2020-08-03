@@ -8,6 +8,8 @@
       name1: value1
       name2: value2
   tasks:
+    - debug: var=multiline
+
     - name: Show me what you got
       debug:
         msg: "My name is {{ item.key }}. The value is {{ item.value }}"

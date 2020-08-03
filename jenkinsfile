@@ -50,7 +50,8 @@ pipeline {
                                  inventory: "localhost,",
                                  playbook: 'multiline.yml',
                                  extraVars: [
-                                    multiline: "$str"
+                                    multiline: "$str",
+                                    list: '[aa,bb]'
                                     ]
                                             )
                            }

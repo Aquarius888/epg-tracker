@@ -1,9 +1,17 @@
+#!groovy
+
+properties([disableConcurrentBuilds()])
+
 pipeline {
+
+          parameters {
+                  text name: 'multiline', defaultValue: '', description: 'multiline text', trim: true
+                   }
          agent any
          stages {
                  stage('Build') {
                     steps {
-                       echo 'Hi, man. Starting to build the App.'
+                       echo 'Hi, man. Starting to build the App. ${params.multiline}'
                           }
                  }
                  stage('Test') {

@@ -16,7 +16,7 @@ pipeline {
                  }
                  stage('Test') {
                     steps {
-                              params.multiline.eachLine { line, count ->
+                              @params.multiline.eachLine { line, count ->
                                         echo "$line"
                               }
                        echo 'I am here...'

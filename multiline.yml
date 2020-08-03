@@ -1,0 +1,14 @@
+---
+
+- name: check
+  hosts: 127.0.0.1
+  gather_facts: false
+  vars:
+    multiline:
+      name1: value1
+      name2: value2
+  tasks:
+    - name: Show me what you got
+      debug:
+        msg: "My name is {{ item.key }}. The value is {{ item.value }}"
+      with_dict: multiline

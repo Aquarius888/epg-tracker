@@ -1,5 +1,5 @@
 #!groovy
-
+def map
 properties([disableConcurrentBuilds()])
 
 pipeline {
@@ -22,7 +22,7 @@ pipeline {
                                         multiline.split("\n").each { String line ->
                                               echo "$line"
                                           }
-                                        def map = multiline
+                                        map = multiline
                                         .split("\n")
                                         .collectEntries{ entry ->
                                                   def parts = entry.split(': ')
@@ -36,14 +36,16 @@ pipeline {
                  }
                  stage('Deploy') {
                     steps {
-                       echo "Start the deploy .."
-                       sh "pwd"
-                       sh "ls -al"
-                       //ansiblePlaybook(
-                       //   vaultCredentialsId: 'AnsibleVault',
-                       //   inventory: "localhost,",
-                       //   playbook: 'onboarding_project.yml'
-                       //   )
+                       ansiblePlaybook(
+                                 become: false,
+                                 hostKeyChecking: false,
+                                 installation: 'ansible',
+                                 inventory: "localhost,",
+                                 playbook: 'multiline.yml',
+                                 extraVars: [
+                                    multiline: map
+                                    ]
+                                            )
                            }
                  }
                  stage('Prod') {

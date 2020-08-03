@@ -28,8 +28,9 @@ pipeline {
                                                   def parts = entry.split(': ')
                                                   [(parts[0]): parts[1]]
                                         }
+                                        echo "$map"
                               }
-                       echo "$map"
+                       
                        //input('Do you want to proceed?')
                           }
                  }

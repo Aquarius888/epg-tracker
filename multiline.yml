@@ -11,4 +11,4 @@
     - name: Show me what you got
       debug:
         msg: "My name is {{ item.key }}. The value is {{ item.value }}"
-      with_dict: multiline
+      with_dict: "{{ multiline }}"

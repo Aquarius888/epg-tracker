@@ -5,7 +5,7 @@ properties([disableConcurrentBuilds()])
 pipeline {
 
           parameters {
-                  text name: 'multiline', defaultValue: '', description: 'multiline text', trim: true
+                  text name: 'multiline', defaultValue: '', description: 'multiline text'
                    }
          agent any
          stages {

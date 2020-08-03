@@ -27,6 +27,7 @@ pipeline {
                                         .collectEntries{ entry ->
                                                   def parts = entry.split(': ')
                                                   [(parts[0]): parts[1]]
+                                        }
                               }
                        echo "$map"
                        //input('Do you want to proceed?')

@@ -1,5 +1,6 @@
 #!groovy
 def map
+def str
 properties([disableConcurrentBuilds()])
 
 pipeline {
@@ -17,7 +18,9 @@ pipeline {
                  stage('Test') {
                     steps {
                               script {
-                                        def keyPair = [:]
+                                        toKeyValue = {
+                                             it.collect { /"$it.key": "$it.value"/} join ", "
+                                             }
                                         def multiline = params.multiline
                                         multiline.split("\n").each { String line ->
                                               echo "$line"
@@ -27,8 +30,12 @@ pipeline {
                                         .collectEntries{ entry ->
                                                   def parts = entry.split(': ')
                                                   [(parts[0]): parts[1]]
+
                                         }
                                         echo "$map"
+                                        str = toKeyValue(map)
+                                        echo "$str"
+
                               }
                        
                        //input('Do you want to proceed?')

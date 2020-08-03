@@ -17,12 +17,18 @@ pipeline {
                  stage('Test') {
                     steps {
                               script {
+                                        def keyPair = [:]
                                         def multiline = params.multiline
                                         multiline.split("\n").each { String line ->
                                               echo "$line"
                                           }
+                                        def map = multiline
+                                        .split("\n")
+                                        .collectEntries{ entry ->
+                                                  def parts = entry.split(': ')
+                                                  [parts[0]: parts[1]]
                               }
-                       echo 'I am here...'
+                       echo "$map"
                        //input('Do you want to proceed?')
                           }
                  }

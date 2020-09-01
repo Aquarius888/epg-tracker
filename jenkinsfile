@@ -13,6 +13,7 @@ pipeline {
                  stage('Build') {
                     steps {
                        echo "Hi, man. Starting to build the App. ${params.multiline}"
+                       input('Do you want to proceed?')
                           }
                  }
                  stage('Test') {

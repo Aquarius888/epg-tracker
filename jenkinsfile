@@ -7,6 +7,7 @@ pipeline {
 
           parameters {
                   text name: 'multiline', defaultValue: '', description: 'multiline text'
+                  booleanParam name: 'verbose', defaultValue: false, description: 'verbose output'
                    }
          agent any
          stages {
@@ -19,6 +20,10 @@ pipeline {
                  stage('Test') {
                     steps {
                               script {
+                                        verb_out = ''
+                                        if (params.verbose) {
+                                            verb_out = '-v'
+                                        }
                                         toKeyValue = {
                                              it.collect { /"$it.key": "$it.value"/} join ", "
                                              }
@@ -50,6 +55,7 @@ pipeline {
                                  installation: 'ansible',
                                  inventory: "localhost,",
                                  playbook: 'multiline.yml',
+                                 extra: "$verb_out",
                                  extraVars: [
                                     multiline: "$str",
                                     list: '["aa","bb"]'

@@ -11,7 +11,7 @@
       - a
       - b
   tasks:
-    - debug: var=list
+    - debug: var=multiline
 
     - debug:
         msg: "{{ item }}"

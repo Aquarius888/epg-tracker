@@ -55,7 +55,7 @@ pipeline {
                                  installation: 'ansible',
                                  inventory: "localhost,",
                                  playbook: 'multiline.yml',
-                                 extra: "$verb_out",
+                                 extras: "$verb_out",
                                  extraVars: [
                                     multiline: "$str",
                                     list: '["aa","bb"]'

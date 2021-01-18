@@ -22,8 +22,10 @@ pipeline {
          stages {
                  stage('Set build name') {
                     steps {
-                        def _branch = params.BRANCH
-                        buildSetter(_branch)
+                        script {
+                            def _branch = params.BRANCH
+                            buildSetter(_branch)
+                        }
 //                        wrap([$class: 'BuildUser']){
 //                            script {
 //                                if ("${params.BRANCH}" == 'null') {

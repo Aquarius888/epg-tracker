@@ -1,4 +1,7 @@
 #!groovy
+
+@Library("dsoLib") _
+
 def map
 def str
 properties([disableConcurrentBuilds()])
@@ -19,17 +22,18 @@ pipeline {
          stages {
                  stage('Set build name') {
                     steps {
-                        wrap([$class: 'BuildUser']){
-                            script {
-                                if ("${params.BRANCH}" == 'null') {
-                                    buildName "${params.project_name}-$BUILD_NUMBER-$GIT_COMMIT_SHORT"
-                                }
-                                else {
-                                    buildName "${params.project_name}-$BUILD_NUMBER-$DEPLOY_ENVIRONMENT-${params.BRANCH}-$GIT_COMMIT_SHORT"
-                                }
-                            }
-                            buildDescription "Executed @ ${NODE_NAME}. Build started by ${BUILD_USER}"
-                        }
+                        buildSetter(${params.BRANCH})
+//                        wrap([$class: 'BuildUser']){
+//                            script {
+//                                if ("${params.BRANCH}" == 'null') {
+//                                    buildName "${params.project_name}-$BUILD_NUMBER-$GIT_COMMIT_SHORT"
+//                                }
+//                                else {
+//                                    buildName "${params.project_name}-$BUILD_NUMBER-$DEPLOY_ENVIRONMENT-${params.BRANCH}-$GIT_COMMIT_SHORT"
+//                                }
+//                            }
+//                            buildDescription "Executed @ ${NODE_NAME}. Build started by ${BUILD_USER}"
+//                        }
                       // buildName "${params.project_name}-${BUILD_NUMBER}"
                       // echo "Hi, man. Starting to build the App. ${params.multiline}"
                       // input('Do you want to proceed?')

@@ -18,11 +18,11 @@ pipeline {
                   text name: 'multiline', defaultValue: '', description: 'multiline text'
                   booleanParam name: 'verbose', defaultValue: false, description: 'verbose output'
          }
-         def _branch = params.BRANCH
          agent any
          stages {
                  stage('Set build name') {
                     steps {
+                        def _branch = params.BRANCH
                         buildSetter(_branch)
 //                        wrap([$class: 'BuildUser']){
 //                            script {

@@ -26,7 +26,6 @@ pipeline {
                             def _branch = params.BRANCH
                             buildSetter(_branch)
                         }
-
                       // buildName "${params.project_name}-${BUILD_NUMBER}"
                       // echo "Hi, man. Starting to build the App. ${params.multiline}"
                       // input('Do you want to proceed?')

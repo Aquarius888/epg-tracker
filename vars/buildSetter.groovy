@@ -6,10 +6,16 @@ import groovy.transform.Field
 @Field String USER
 
 def call(String branch) {
+    if (env.DEPLOY_ENVIRONMENT) {
+        ENVIRONMENT = env.DEPLOY_ENVIRONMENT
+    } else if (env.BUILD_ENVIRONMENT) {
+        ENVIRONMENT = env.BUILD_ENVIRONMENT
+    } else {
+        ENVIRONMENT = ""
+    }
     if (!branch?.trim()) {
         buildName "$BUILD_NUMBER-$GIT_COMMIT_SHORT"
     } else {
-        ENVIRONMENT = env.DEPLOY_ENVIRONMENT ?: ""
         buildName "$BUILD_NUMBER-$ENVIRONMENT-$branch-$GIT_COMMIT_SHORT"
     }
     USER = env.BUILD_USER ?: "Jenkins"

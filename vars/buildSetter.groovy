@@ -18,6 +18,9 @@ def call(String branch) {
     } else {
         buildName "$BUILD_NUMBER-$ENVIRONMENT-$branch-$GIT_COMMIT_SHORT"
     }
-    USER = env.BUILD_USER ?: "Jenkins"
-    buildDescription "Executed @ ${NODE_NAME}. Build started by ${USER}"
+    // USER = env.BUILD_USER ?: "Jenkins"
+    wrap([$class: 'BuildUser']){
+        buildDescription "Executed @ ${NODE_NAME}. Build started by ${BUILD_USER}"
+    }
+
 }

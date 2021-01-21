@@ -20,7 +20,7 @@ def call(String branch) {
     }
     // USER = env.BUILD_USER ?: "Jenkins"
     wrap([$class: 'BuildUser']){
-        USER = ${BUILD_USER} ? ${BUILD_USER} : "Jenkins"
+        USER = "${BUILD_USER}" ? "${BUILD_USER}" : "Jenkins"
         buildDescription "Executed @ ${NODE_NAME}. Build started by ${BUILD_USER}"
     }
 

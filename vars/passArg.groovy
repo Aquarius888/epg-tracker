@@ -1,10 +1,12 @@
 import com.dom.pipeline.Args
 
-def call(String arg=null) {
+def call(String arg=".") {
     Args args = new Args(this)
-    if (arg == null) {
-        args('.')
+    if (arg == ".") {
+        args(${arg})
     } else {
         arg += ' .'
-        args(arg)}
+        args(${arg})
+    }
+        
 }

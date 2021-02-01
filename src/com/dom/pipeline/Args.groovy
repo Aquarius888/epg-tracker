@@ -8,7 +8,6 @@ class Args {
     }
 
     public void passArgs(String arg) {
-        echo "Pass Args test echo"
         script.sh """
             ls $arg .
         """

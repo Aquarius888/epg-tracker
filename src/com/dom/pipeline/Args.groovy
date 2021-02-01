@@ -9,7 +9,7 @@ class Args {
 
     public void passArgs(String arg) {
         script.sh """
-            ls $arg
+            ls $arg .
         """
     }
 }

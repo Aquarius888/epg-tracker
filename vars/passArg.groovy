@@ -5,5 +5,6 @@ def call(String arg=null) {
     if (arg == null) {
         args('.')
     } else {
-        args(arg + ' .')}
+        arg += ' .'
+        args(arg)}
 }

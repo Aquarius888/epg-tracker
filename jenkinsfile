@@ -37,7 +37,7 @@ pipeline {
                     steps {
                         script {
                             def _arg = params.ARG
-                            Args.passArg(_arg)
+                            passArg(_arg)
                         }
                     }
                  }

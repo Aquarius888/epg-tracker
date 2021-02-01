@@ -32,6 +32,14 @@ pipeline {
                       // input('Do you want to proceed?')
                           }
                  }
+                 stage('Check Args') {
+                    steps {
+                        script {
+                            passArg()
+                        }
+                    }
+                 }
+
                  stage('Test') {
                     steps {
                               script {
@@ -58,7 +66,7 @@ pipeline {
                                         echo "$str"
 
                               }
-                       
+
                        //input('Do you want to proceed?')
                           }
                  }

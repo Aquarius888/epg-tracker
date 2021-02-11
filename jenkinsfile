@@ -90,6 +90,14 @@ pipeline {
                  }
                  stage('Prod') {
                     steps {
+                       script {
+                          def aaa = sh "ls | wc -l"
+                          if (null.equals($aaa)) {
+                              echo "var is null"
+                          } else {
+                              echo "$aaa"
+                          }
+                       }
                        echo "App is Prod Ready"
                           }
 

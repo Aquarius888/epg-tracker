@@ -92,7 +92,7 @@ pipeline {
                     steps {
                        script {
                           def aaa = sh "ls | wc -l"
-                          if (null.equals($aaa)) {
+                          if (aaa == null) {
                               echo "var is null"
                           } else {
                               echo "$aaa"

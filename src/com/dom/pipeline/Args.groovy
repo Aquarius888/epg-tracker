@@ -7,8 +7,8 @@ class Args {
         this.script = script
     }
 
-    public void passArgs(String arg) {
-        script.sh """
+    public String passArgs(String arg) {
+        return script.sh """
             ls $arg .
         """
     }

@@ -8,7 +8,7 @@ class Args {
     }
 
     public String passArgs(String arg) {
-        return script.sh """
+        script.sh """
             ls $arg .
         """
     }

@@ -20,10 +20,10 @@ def call(String branch) {
     }
     // USER = env.BUILD_USER ? env.BUILD_USER : "Jenkins"
 
-    if (env.BUILD_CAUSE) { BUILD_USER="WebHooker" }
+    USER = "${currentBuild.getBuildCauses()[0].shortDescription}"
 
     wrap([$class: 'BuildUser']){
-            USER = "${BUILD_USER}" ? "${BUILD_USER}" : "Jenkins"
+            //USER = "${BUILD_USER}" ? "${BUILD_USER}" : "Jenkins"
             buildDescription "Executed @ ${NODE_NAME}. Build started by ${USER}"
     }
 }

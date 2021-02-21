@@ -22,10 +22,10 @@ def call(String branch) {
     if (currentBuild.getBuildCauses()[0].shortDescription == "Generic Cause") {
         USER = "WebHooker"
     } else {
-        USER = "${BUILD_USER}" ? "${BUILD_USER}" : "Jenkins"
+        USER = env.BUILD_USER ? env.BUILD_USER : "Jenkins"
     }
 
     wrap([$class: 'BuildUser']){
-            buildDescription "Executed @ ${NODE_NAME}. Build started by ${USER}"
+        buildDescription "Executed @ ${NODE_NAME}. Build started by ${USER}"
     }
 }

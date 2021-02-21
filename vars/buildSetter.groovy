@@ -20,12 +20,11 @@ def call(String branch) {
     }
     // USER = env.BUILD_USER ? env.BUILD_USER : "Jenkins"
 
-    if (BUILD_CAUSE) {
-        export BUILD_USER="WebHooker"
-    }
+    // if (env.BUILD_CAUSE) { BUILD_USER="WebHooker" }
+    buildDescription "${BUILD_CAUSE}"
 
-    wrap([$class: 'BuildUser']){
-            USER = "${BUILD_USER}" ? "${BUILD_USER}" : "Jenkins"
-            buildDescription "Executed @ ${NODE_NAME}. Build started by ${USER}"
-        }
+    //wrap([$class: 'BuildUser']){
+    //        USER = "${BUILD_USER}" ? "${BUILD_USER}" : "Jenkins"
+    //        buildDescription "Executed @ ${NODE_NAME}. Build started by ${USER}"
+    //}
 }

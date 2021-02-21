@@ -20,7 +20,7 @@ def call(String branch) {
     }
     // USER = env.BUILD_USER ? env.BUILD_USER : "Jenkins"
 
-    if (${BUILD_CAUSE}) {
+    if (BUILD_CAUSE) {
         export BUILD_USER="WebHooker"
     }
 

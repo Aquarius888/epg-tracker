@@ -20,10 +20,12 @@ def call(String branch) {
     }
     // USER = env.BUILD_USER ?: "Jenkins"
 
-    try:
+    try {
         USER = "${BUILD_USER}"
-    catch Exception:
+    }
+    catch (Exception e) {
         USER = "Jenkins"
+    }
     wrap([$class: 'BuildUser']){
             // USER = "${BUILD_USER}" ? "${BUILD_USER}" : "Jenkins"
             buildDescription "Executed @ ${NODE_NAME}. Build started by ${BUILD_USER}"

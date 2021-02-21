@@ -18,16 +18,8 @@ def call(String branch) {
     } else {
         buildName "$BUILD_NUMBER-$ENVIRONMENT-$branch-$GIT_COMMIT_SHORT"
     }
-    // USER = env.BUILD_USER ?: "Jenkins"
-
-    try {
-        USER = "${BUILD_USER}"
-    }
-    catch (Exception e) {
-        USER = "Jenkins"
-    }
     wrap([$class: 'BuildUser']){
-            // USER = "${BUILD_USER}" ? "${BUILD_USER}" : "Jenkins"
-            buildDescription "Executed @ ${NODE_NAME}. Build started by ${BUILD_USER}"
+            USER = "${BUILD_USER}" ? "${BUILD_USER}" : "Jenkins"
+            buildDescription "Executed @ ${NODE_NAME}. Build started by ${USER}"
         }
 }

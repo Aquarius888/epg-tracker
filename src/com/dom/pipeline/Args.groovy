@@ -9,8 +9,8 @@ class Args {
 
     public String passArgs(String arg) {
         def t = script.sh (script:"""
-            ls $arg .
+            ls $arg . | grep README
         """, returnStdout: true)
-        return t
+        return t.trim()
     }
 }

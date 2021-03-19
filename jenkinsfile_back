@@ -4,14 +4,16 @@
 
 def map
 def str
+def NEWVAR
 properties([disableConcurrentBuilds()])
 
 pipeline {
          environment {
-             GIT_COMMIT_SHORT = sh(
-                 script: "printf \$(git rev-parse --short ${GIT_COMMIT})",
-                 returnStdout: true
-             )
+             GIT_COMMIT_SHORT = "111111"
+            // sh(
+            //      script: "printf \$(git rev-parse --short ${GIT_COMMIT})",
+            //      returnStdout: true
+            //  )
          }
          parameters {
                   string name: 'project_name', defaultValue: 'VEGA', description: 'I would like it to build name'
@@ -29,7 +31,16 @@ pipeline {
                       // buildName "${params.project_name}-${BUILD_NUMBER}"
                       // echo "Hi, man. Starting to build the App. ${params.multiline}"
                       // input('Do you want to proceed?')
-                          }
+                    }
+                 }
+                 stage('SH test') {
+                     steps {
+                         script {
+                             NEWVAR = passArg("")
+                         }
+                        echo "var value: ${NEWVAR}"
+                        echo params.Prop
+                     }
                  }
                  stage('Test') {
                     steps {

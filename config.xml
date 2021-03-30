@@ -1,0 +1,136 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<com.cloudbees.hudson.plugins.folder.Folder plugin="cloudbees-folder@6.14">
+  <actions/>
+  <description>test</description>
+  <properties>
+    <com.cloudbees.hudson.plugins.folder.properties.AuthorizationMatrixProperty>
+      <inheritanceStrategy class="org.jenkinsci.plugins.matrixauth.inheritance.InheritParentStrategy"/>
+      <permission>hudson.model.Item.Build:developer-U200004636</permission>
+      <permission>hudson.model.Item.Build:devops-U200004636</permission>
+      <permission>hudson.model.Item.Cancel:developer-U200004636</permission>
+      <permission>hudson.model.Item.Cancel:devops-U200004636</permission>
+      <permission>hudson.model.Item.Configure:developer-U200004636</permission>
+      <permission>hudson.model.Item.Configure:devops-U200004636</permission>
+      <permission>hudson.model.Item.Create:devops-U200004636</permission>
+      <permission>hudson.model.Item.Delete:devops-U200004636</permission>
+      <permission>hudson.model.Item.Discover:authenticated</permission>
+      <permission>hudson.model.Item.Discover:devops-U200004636</permission>
+      <permission>hudson.model.Item.Discover:participant-U200004636</permission>
+      <permission>hudson.model.Item.Discover:project_manager-U200004636</permission>
+      <permission>hudson.model.Item.Discover:tester-U200004636</permission>
+      <permission>hudson.model.Item.Read:developer-U200004636</permission>
+      <permission>hudson.model.Item.Read:devops-U200004636</permission>
+      <permission>hudson.model.Item.Read:participant-U200004636</permission>
+      <permission>hudson.model.Item.Read:program_administrator-U200004636</permission>
+      <permission>hudson.model.Item.Read:program_manager-U200004636</permission>
+      <permission>hudson.model.Item.Read:project_manager-U200004636</permission>
+      <permission>hudson.model.Item.Read:tester-U200004636</permission>
+      <permission>hudson.model.Item.Workspace:developer-U200004636</permission>
+      <permission>hudson.model.Item.Workspace:devops-U200004636</permission>
+      <permission>hudson.model.Run.Update:devops-U200004636</permission>
+      <permission>hudson.model.View.Read:architect-U200004636</permission>
+      <permission>hudson.model.View.Read:authenticated</permission>
+      <permission>hudson.model.View.Read:developer-U200004636</permission>
+      <permission>hudson.model.View.Read:devops-U200004636</permission>
+      <permission>hudson.model.View.Read:participant-U200004636</permission>
+      <permission>hudson.model.View.Read:program_administrator-U200004636</permission>
+      <permission>hudson.model.View.Read:program_manager-U200004636</permission>
+      <permission>hudson.model.View.Read:project_manager-U200004636</permission>
+      <permission>hudson.model.View.Read:tester-U200004636</permission>
+    </com.cloudbees.hudson.plugins.folder.properties.AuthorizationMatrixProperty>
+    <com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider_-FolderCredentialsProperty>
+      <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash">
+        <entry>
+          <com.cloudbees.plugins.credentials.domains.Domain plugin="credentials@2.3.11">
+            <specifications/>
+          </com.cloudbees.plugins.credentials.domains.Domain>
+          <java.util.concurrent.CopyOnWriteArrayList>
+            <com.datapipe.jenkins.vault.credentials.VaultAppRoleCredential plugin="hashicorp-vault-plugin@3.6.1">
+              <id>tech-dsometr-vault</id>
+              <description>tech-dsometr-vault</description>
+              <secretId>{AQAABAAAAAwhcWQIH6A12Ifb/4ygxkgFHQrased0828A/6wXdiDtxSnMuBrByT4wCAcFx5X2nvatUctEEiclQKr98YCHxHwlA==}</secretId>
+              <roleId>b3e3d7d2-0e1d-cbf9-e456-e140fdb2e35d</roleId>
+              <path>approle</path>
+            </com.datapipe.jenkins.vault.credentials.VaultAppRoleCredential>
+            <com.datapipe.jenkins.vault.credentials.VaultAppRoleCredential plugin="hashicorp-vault-plugin@3.6.1">
+              <id>tech-dsometr-vault-dev</id>
+              <description>tech-dsometr-vault-dev</description>
+              <secretId>{AQAABAAAAAwsrAKzBAo9H33yxpojAXG6g8ekgGrZqaKFXQcXMGOtLFrcIe5iraAqzMtVUwMThJDYtKDJWbxsHbTaCrkTmWBdg==}</secretId>
+<roleId>21801e94-188a-e95e-f16c-585f613782dc</roleId>
+              <path>approle</path>
+            </com.datapipe.jenkins.vault.credentials.VaultAppRoleCredential>
+            <com.datapipe.jenkins.vault.credentials.VaultAppRoleCredential plugin="hashicorp-vault-plugin@3.6.1">
+              <id>tech-dsometr-vault-uat</id>
+              <description>tech-dsometr-vault-uat</description>
+              <secretId>{AQAABAAAAAwMys5z6PNTngj7y3I2ExLyRRLXAxUD6KHOtMfQuFMHa2S3arug1YOoeGsxZJeeiVo2SSOuGf/tPW/atphwsbf0A==}</secretId>
+              <roleId>7952dbe3-82d2-136d-0e36-0420d80a7973</roleId>
+              <path>approle</path>
+            </com.datapipe.jenkins.vault.credentials.VaultAppRoleCredential>
+          </java.util.concurrent.CopyOnWriteArrayList>
+        </entry>
+      </domainCredentialsMap>
+    </com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider_-FolderCredentialsProperty>
+    <org.jenkinsci.plugins.docker.workflow.declarative.FolderConfig plugin="docker-workflow@1.23">
+      <dockerLabel></dockerLabel>
+      <registry plugin="docker-commons@1.16"/>
+    </org.jenkinsci.plugins.docker.workflow.declarative.FolderConfig>
+    <org.jenkinsci.plugins.workflow.libs.FolderLibraries plugin="workflow-cps-global-lib@2.16">
+      <libraries>
+        <org.jenkinsci.plugins.workflow.libs.LibraryConfiguration>
+          <name>dsoLibrary</name>
+          <retriever class="org.jenkinsci.plugins.workflow.libs.SCMSourceRetriever">
+            <scm class="jenkins.plugins.git.GitSCMSource" plugin="git@4.2.2">
+              <id>89baa013-2bbd-41ba-ac66-0bee0b91d03a</id>
+              <remote>ssh://alm-itsk.gazprom-neft.local:8180/TFS/GPN/DSO_SERVICE/_git/dso-jenkins-lib</remote>
+              <credentialsId>d35cc8ea-04ce-4c30-97e3-e201ee123634</credentialsId>
+              <traits>
+                <jenkins.plugins.git.traits.BranchDiscoveryTrait/>
+              </traits>
+            </scm>
+          </retriever>
+          <defaultVersion>master</defaultVersion>
+          <implicit>false</implicit>
+          <allowVersionOverride>true</allowVersionOverride>
+          <includeInChangesets>true</includeInChangesets>
+        </org.jenkinsci.plugins.workflow.libs.LibraryConfiguration>
+      </libraries>
+    </org.jenkinsci.plugins.workflow.libs.FolderLibraries>
+    <com.datapipe.jenkins.vault.configuration.FolderVaultConfiguration plugin="hashicorp-vault-plugin@3.6.1">
+      <configuration>
+        <failIfNotFound>true</failIfNotFound>
+        <skipSslVerification>false</skipSslVerification>
+        <timeout>60</timeout>
+      </configuration>
+    </com.datapipe.jenkins.vault.configuration.FolderVaultConfiguration>
+    <com.mig82.folders.properties.FolderProperties plugin="folder-properties@1.2.1">
+      <properties>
+        <com.mig82.folders.properties.StringProperty>
+          <key>OCP_NAMESPACE</key>
+          <value>tech-dsometr</value>
+        </com.mig82.folders.properties.StringProperty>
+        <com.mig82.folders.properties.StringProperty>
+          <key>REGISTRY_TRUST</key>
+          <value>registry.gazprom-neft.local:5000</value>
+        </com.mig82.folders.properties.StringProperty>
+      </properties>
+    </com.mig82.folders.properties.FolderProperties>
+  </properties>
+  <folderViews class="com.cloudbees.hudson.plugins.folder.views.DefaultFolderViewHolder">
+    <views>
+      <hudson.model.AllView>
+        <owner class="com.cloudbees.hudson.plugins.folder.Folder" reference="../../../.."/>
+        <name>All</name>
+        <filterExecutors>false</filterExecutors>
+        <filterQueue>false</filterQueue>
+        <properties class="hudson.model.View$PropertyList"/>
+      </hudson.model.AllView>
+    </views>
+    <tabBar class="hudson.views.DefaultViewsTabBar"/>
+  </folderViews>
+  <healthMetrics>
+    <com.cloudbees.hudson.plugins.folder.health.WorstChildHealthMetric>
+      <nonRecursive>false</nonRecursive>
+    </com.cloudbees.hudson.plugins.folder.health.WorstChildHealthMetric>
+  </healthMetrics>
+  <icon class="com.cloudbees.hudson.plugins.folder.icons.StockFolderIcon"/>
+</com.cloudbees.hudson.plugins.folder.Folder>

@@ -22,9 +22,8 @@
         msg: "My name is {{ item.key }}. The value is {{ item.value }}"
       with_dict: "{{ multiline }}"
       
-     - name: ls
-       command: "ls -al ."
-       register: dir_out
+    - command: "ls -al ."
+      register: dir_out
       
     - name: Read xml element
       community.general.xml:

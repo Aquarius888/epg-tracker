@@ -22,9 +22,13 @@
         msg: "My name is {{ item.key }}. The value is {{ item.value }}"
       with_dict: "{{ multiline }}"
       
+     - name: ls
+       command: "ls -al ."
+       register: dir_out
+      
     - name: Read xml element
       community.general.xml:
-        path: ./config.xml
+        path: /config.xml
         xpath: /com.cloudbees.hudson.plugins.folder.Folder/actions/properties
         content: com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider_-FolderCredentialsProperty
       register: xmlresp

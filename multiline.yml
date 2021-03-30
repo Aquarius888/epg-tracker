@@ -23,14 +23,10 @@
       with_dict: "{{ multiline }}"
       
     - name: file
-      debug: var=item
-      with_file:
-        - "./config.xml"
-      
-    - name: Read xml element
-      community.general.xml:
-        path: config.xml
+      xml: 
+        xmlstring: item
         xpath: /com.cloudbees.hudson.plugins.folder.Folder/actions/properties
         content: com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider_-FolderCredentialsProperty
+      with_file:
+        - "./config.xml"
       register: xmlresp
-        

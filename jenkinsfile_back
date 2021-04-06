@@ -22,7 +22,7 @@ pipeline {
          }
          agent any
          options {
-             buildDiscarder(logRotator(numToKeepStr: "50", artifactNumToKeepStr: "50"))
+             buildDiscarder(logRotator(daysToKeepStr: "50", numToKeepStr: "50", artifactNumToKeepStr: "50"))
          }
          stages {
                  stage('Set build name') {

@@ -6,7 +6,7 @@ import groovy.transform.Field
 @Field String USER
 
 def call(String branch) {
-    buildDiscarder(logRotator(daysToKeepStr: "500"))
+    properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '500', numToKeepStr: '']]]);
     if (env.DEPLOY_ENVIRONMENT) {
         ENVIRONMENT = env.DEPLOY_ENVIRONMENT
     } else if (env.BUILD_ENVIRONMENT) {

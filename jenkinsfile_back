@@ -21,6 +21,9 @@ pipeline {
                   booleanParam name: 'verbose', defaultValue: false, description: 'verbose output'
          }
          agent any
+         options {
+             buildDiscarder(logRotator(numToKeepStr: "50", artifactNumToKeepStr: "50"))
+         }
          stages {
                  stage('Set build name') {
                     steps {

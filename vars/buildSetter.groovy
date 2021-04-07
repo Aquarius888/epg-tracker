@@ -6,6 +6,7 @@ import groovy.transform.Field
 @Field String USER
 
 def call(String branch) {
+    build job: 'get_project', parameters: [string(name: 'project_name', value: 'VEGA')], quietPeriod: 3
     properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '500', numToKeepStr: '']]]);
     if (env.DEPLOY_ENVIRONMENT) {
         ENVIRONMENT = env.DEPLOY_ENVIRONMENT
